@@ -1,0 +1,115 @@
+﻿@page "/suppliers"
+@using OrderManagement.Client.Interfaces
+@using OrderManagement.Shared.Entities
+@inject HttpClient Http
+@inject ISupplierService SupplierService
+<h1>Suppliers</h1>
+<div class="row">
+    <div class="col-md-6">
+        <a href='/supplier/add' class="btn btn-primary" role="button">
+            <i class="fas fa-user-plus"></i>
+            Add Supplier
+        </a>
+    </div>
+    <div class="input-group col">
+        <input type="text" class="form-control" placeholder="Search supplier by name"
+               @bind="SearchString" @bind:event="oninput" @onkeyup="FilterSupplier" />
+        @if (SearchString.Length > 0)
+        {
+            <div class="input-group-append">
+                <button class="btn btn-danger" @onclick="ResetSearch">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        }
+    </div>
+</div>
+<br />
+@if (supplierList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped align-middle table-bordered">
+        <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address Line1</th>
+                <th>Address Line2</th>
+                <th>City</th>
+                <th>PostalCode</th>
+                <th>State</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var supplier in supplierList)
+            {
+                <tr>
+                    <td>@supplier.Id</td>
+                    <td>@supplier.Name</td>
+                    <td>@supplier.AddressLine1</td>
+                    <td>@supplier.AddressLine2</td>
+                    <td>@supplier.City</td>
+                    <td>@supplier.PostalCode</td>
+                     <td>@supplier.State</td>
+                    <td>
+                        <a href='/supplier/view/@supplier.Id' class="btn btn-outline-info" role="button">
+                            View
+                        </a>
+                        <a href='/supplier/edit/@supplier.Id' class="btn btn-outline-dark" role="button">
+                            Edit
+                        </a>
+                        <a href='/supplier/delete/@supplier.Id' class="btn btn-outline-danger" role="button">
+                            Delete
+                        </a>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+@code {
+    protected List<Supplier> supplierList = new();
+    protected List<Supplier> searchSupplierData = new();
+    protected Supplier supplier = new();
+    protected string SearchString { get; set; } = string.Empty;
+    protected override async Task OnInitializedAsync()
+    {
+        //supplierList = Http.GetFromJsonAsync<ServiceResponse<List<Supplier>>>("api/supplier");
+        
+        await GetSupplier();
+    }
+    protected async Task GetSupplier()
+    {
+        
+        supplierList = await SupplierService.GetAllSuppliers();
+        searchSupplierData = supplierList;
+    }
+    protected void FilterSupplier()
+    {
+        if (!string.IsNullOrEmpty(SearchString))
+        {
+            supplierList = searchSupplierData
+                .Where(x => x.Name.IndexOf(SearchString, StringComparison.OrdinalIgnoreCase) != -1)
+                .ToList();
+        }
+        else
+        {
+            supplierList = searchSupplierData;
+        }
+    }
+    protected void DeleteConfirm(int id)
+    {
+        supplier = supplierList.FirstOrDefault(x => x.Id == id);
+    }
+    public void ResetSearch()
+    {
+        SearchString = string.Empty;
+        supplierList = searchSupplierData;
+    }
+}

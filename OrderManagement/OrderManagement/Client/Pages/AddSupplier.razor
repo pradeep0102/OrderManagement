@@ -1,0 +1,104 @@
+﻿@page "/supplier/add"
+@page "/supplier/edit/{id:int}"
+@using OrderManagement.Client.Interfaces
+@using OrderManagement.Shared.Entities
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject ISupplierService SupplierService
+<h1>@Title Supplier</h1>
+<hr />
+<EditForm Model="@supplier" OnValidSubmit="SaveSupplier">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="supplier.Name" />
+        </div>
+        <ValidationMessage For="@(() => supplier.Name)" />
+    </div>
+    <div class="mb-3">
+        <label for="AddressLine1" class="form-label">Address 1</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="supplier.AddressLine1" />
+        </div>
+        <ValidationMessage For="@(() => supplier.AddressLine1)" />
+    </div>
+    <div class="mb-3">
+        <label for="AddressLine2" class="form-label">Address 2</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="supplier.AddressLine2" />
+        </div>
+        <ValidationMessage For="@(() => supplier.AddressLine2)" />
+    </div>
+   
+    <div class="mb-3">
+        <label for="PostalCode" class="form-label">Postal Code</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="supplier.PostalCode" />
+        </div>
+        <ValidationMessage For="@(() => supplier.PostalCode)" />
+    </div>
+     <div class="mb-3">
+        <label for="City" class="form-label">City</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="supplier.City" />
+        </div>
+        <ValidationMessage For="@(() => supplier.City)" />
+    </div>
+      <div class="mb-3">
+           <label for="State" class="form-label">State</label>
+           <div class="col-md-4">
+                    <select class="form-control" @bind="supplier.State">
+                        @foreach (var state in statelist)
+                        {
+                            <option value="@state">@state</option>
+                        }
+                    </select>
+           </div>
+           <ValidationMessage For="@(() => supplier.State)" />
+      </div>
+    @* <div class="mb-3">
+        <label for="State" class="form-label">State</label>
+
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="supplier.State" />
+        </div>
+        <ValidationMessage For="@(() => supplier.State)" />
+    </div>*@
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button class="btn btn-light" @onclick="Cancel">Cancel</button>
+    </div>
+</EditForm>
+@code {
+    [Parameter]
+    public int id { get; set; }
+    protected string Title = "Add";
+    protected Supplier supplier = new();
+    private List<string> statelist = new List<string>() { "Texas", "California", "Virginia", "Montana", "Georgia" };
+    protected override async Task OnParametersSetAsync()
+    {
+        if (id != 0)
+        {
+            Title = "Edit";
+            supplier = await SupplierService.GetSupplier(id);
+        }
+    }
+    protected async Task SaveSupplier()
+    {
+        if (supplier.Id != 0)
+        {
+            await SupplierService.UpdateSupplier(supplier);
+        }
+        else
+        {
+            await SupplierService.AddSupplier(supplier);
+        }
+        Cancel();
+    }
+    public void Cancel()
+    {
+        NavigationManager.NavigateTo("/suppliers");
+    }
+}

@@ -1,0 +1,59 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = browser
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = true
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = OrderManagement.Client
+build_property.RootNamespace = OrderManagement.Client
+build_property.ProjectDir = C:\Users\techh\Downloads\GitHub\OrderManagement\OrderManagement\OrderManagement\Client\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\techh\Downloads\GitHub\OrderManagement\OrderManagement\OrderManagement\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/Pages/AddSupplier.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkU3VwcGxpZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/Pages/DeleteSupplier.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlU3VwcGxpZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/Pages/Suppliers.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGxpZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/Pages/ViewSupplier.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld1N1cHBsaWVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-6t9rkj1g1q
+
+[C:/Users/techh/Downloads/GitHub/OrderManagement/OrderManagement/OrderManagement/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-erh4hjujma

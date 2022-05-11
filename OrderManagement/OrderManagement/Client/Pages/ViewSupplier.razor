@@ -1,0 +1,49 @@
+﻿@page "/supplier/view/{id:int}"
+@using OrderManagement.Client.Interfaces
+@using OrderManagement.Shared.Entities
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject ISupplierService SupplierService
+<h2>View Supplier</h2>
+<br />
+<div class="form-group">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>@supplier.Name</td>
+            </tr>
+            <tr>
+                <td>AddressLine1</td>
+                <td>@supplier.AddressLine1</td>
+            </tr>
+            <tr>
+                <td>AddressLine2</td>
+                <td>@supplier.AddressLine2</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>@supplier.City</td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td>@supplier.State</td>
+            </tr>
+            <tr>
+                <td>Postal Code</td>
+                <td>@supplier.PostalCode</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    Supplier supplier = new Supplier();
+    protected override async Task OnInitializedAsync()
+    {
+        supplier = await SupplierService.GetSupplier(id);
+    }
+}
